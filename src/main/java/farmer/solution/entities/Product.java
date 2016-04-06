@@ -24,8 +24,6 @@ public class Product extends BaseEntity {
 	private int quantity;
 	private int price;
 	private String phone;
-	@ManyToOne
-	private User user;
 	private String category;
 
 	public Long getId() {
@@ -84,14 +82,7 @@ public class Product extends BaseEntity {
 		this.phone = phone;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
+	
 	public String getCategory() {
 		return category;
 	}

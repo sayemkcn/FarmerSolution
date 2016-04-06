@@ -79,8 +79,8 @@ public class ProductController {
 			return null;
 		} else {
 			try {
-				product.setUser(user);
-				productService.saveProduct(product);
+				user.getProductList().add(product);
+				userService.saveUser(user);
 			} catch (Exception e) {
 				System.out.println("Problem saving product!! " + e.toString());
 			}
@@ -98,11 +98,11 @@ public class ProductController {
 		int size = Integer.parseInt(map.get("size"));
 		return productService.getProductByRange(start, size);
 	}
-	
+
 	// find product by category
-	@RequestMapping(value="/category/{categoryName}",method=RequestMethod.GET)
+	@RequestMapping(value = "/category/{categoryName}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Product> getProductByCategory(@PathVariable("categoryName") String categoryName){
+	public List<Product> getProductByCategory(@PathVariable("categoryName") String categoryName) {
 		return productService.loadProductByCategory(categoryName);
 	}
 

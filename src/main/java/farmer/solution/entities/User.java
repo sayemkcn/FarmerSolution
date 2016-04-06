@@ -29,6 +29,8 @@ public class User extends BaseEntity{
 	private String token;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Product> productList = new ArrayList<>();
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Question> questionList = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -94,5 +96,15 @@ public class User extends BaseEntity{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public List<Question> getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(List<Question> questionList) {
+		this.questionList = questionList;
+	}
+
+	
 
 }

@@ -38,8 +38,8 @@ public class ProductService {
 		return b;
 	}
 
-	public void saveProduct(Product product) throws Exception {
-		productRepository.save(product);
+	public Product saveProduct(Product product) throws Exception {
+		return productRepository.save(product);
 	}
 
 	// Pagination
