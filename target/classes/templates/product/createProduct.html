@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Create Product</title>
+</head>
+<body>
+
+	<form action="" method="post">
+		<span th:text="${message}"></span><br></br>
+		Insert New Product<br></br>
+		Title: <input type="text" name="title"></input><br></br>
+		Details: <input type="text" name="details"></input><br></br>
+		Image: <input type="file" name="productImage"></input><br></br>
+		Quantity: <input type="text" name="quantity"></input><br></br>
+		Price: <input type="text" name="price"></input><br></br>
+		Phone: <input type="text" name="phone"></input><br></br>
+		Category: <input type="text" name="category"></input><br></br>
+		Token: <input type="text" name="token"></input><br></br>
+		
+		<input type="submit" value="Create Product"></input>
+	</form>
+	
+</body>
+</html>
