@@ -19,40 +19,33 @@ import farmer.solution.services.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping(value="",method=RequestMethod.GET)
-	public String home(){
+
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String home() {
 		return "index";
 	}
-	
-	
-	@RequestMapping(value="/register",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
-	public User register(@ModelAttribute User user,BindingResult bindingResult) {
+	public User register(@ModelAttribute User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			System.out.println("CAN NOT BIND USER: "+bindingResult.toString());
+			System.out.println("CAN NOT BIND USER: " + bindingResult.toString());
 		}
 		return userService.saveUser(user);
 	}
-	
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public String login(@RequestParam Map<String,String> map){
-		String phoneNumber = map.get("phoneNumber");
-		String password = map.get("password");
+	public String login(@RequestParam("phoneNumber") String phoneNumber) {
 		User user = userService.loadUserByPhoneNumber(phoneNumber);
-		if (user!=null) {
-			if(user.getPassword().equals(password)){
-				String token = new SessionIdentifierGenerator().nextSessionId();
-				user.setToken(token);
-				userService.saveUser(user);
-				return token;
-			}else {
-				return "PasswordWrong";
-			}
-		}else {
+		if (user != null) {
+			String token = new SessionIdentifierGenerator().nextSessionId();
+			user.setToken(token);
+			userService.saveUser(user);
+			return token;
+		} else {
 			return "NotFound";
 		}
-		
+
 	}
 }

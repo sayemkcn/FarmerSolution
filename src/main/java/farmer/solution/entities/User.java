@@ -31,6 +31,8 @@ public class User extends BaseEntity{
 	private List<Product> productList = new ArrayList<>();
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Question> questionList = new ArrayList<>();
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<BankLoanApplication> bankLoanApplicationList = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -103,6 +105,14 @@ public class User extends BaseEntity{
 
 	public void setQuestionList(List<Question> questionList) {
 		this.questionList = questionList;
+	}
+
+	public List<BankLoanApplication> getBankLoanApplicationList() {
+		return bankLoanApplicationList;
+	}
+
+	public void setBankLoanApplicationList(List<BankLoanApplication> bankLoanApplicationList) {
+		this.bankLoanApplicationList = bankLoanApplicationList;
 	}
 
 	
